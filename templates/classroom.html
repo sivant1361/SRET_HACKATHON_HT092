@@ -1,0 +1,55 @@
+{% extends 'homepage.html' %} {% block title %}{{Name}}{% endblock %} {% block
+main %}
+<div
+  class="container"
+  style="
+    padding: 2em;
+    background-color: #a299d0;
+    width: 100%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  "
+>
+  <div
+    class="row justify-content-center"
+    style="padding: 1em; height: 100%; margin-top: 1em"
+  >
+    <div class="col-lg-6 col-sm-12 block" style="padding: 1em">
+      <img
+        src="{{url_for('static', filename='img_1.png')}}"
+        alt="Image not available"
+        style="width: 100%; height: 100%"
+      />
+    </div>
+    <div
+      class="col-lg-6 col-sm-12 row justify-content-center align-items-center"
+      style="padding: 1em"
+    >
+      <h2 class="title">How do they feel...</h2>
+      <br />
+      <p class="text">
+        Have you ever felt bored and wanted to know the emotional status of the
+        surrounding crowd?
+        <br />Take a picture and Check it for yourself !
+      </p>
+      <form
+        action="{{ url_for('classroom_predict')}}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="row justify-content-center" style="padding: 0 6em 0 0">
+          <input
+            type="file"
+            name="file"
+            class="btn file-upload"
+            style="padding: 0.6em 1em"
+          />
+        </div>
+        <div class="mt-4">
+          <button class="btn btn btn-outline-dark col-md-3">Predict</button>
+        </div>
+      </form>
+    </div>
+    {% endblock %}
+  </div>
+</div>
